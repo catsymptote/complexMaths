@@ -5,18 +5,45 @@
 
 int main()
 {
-    cplx x(2, 3);
-    cplx y(4, -1);
+    float aR = 2;
+    float aI = 3;
+    float bR = 4;
+    float bI = -1;
 
-    cplx z1 = x+y;
-    cplx z2 = x-y;
-    cplx z3 = x*y;
-    cplx z4 = x/y;
+    //cplx <float> x(aR, aI);
+    //cplx<float> x;
+    //x.setRe(aR);
+    //x.setIm(aI);
+    //cplx <float> y(bR, bI);
+    cplx<float> *x;
+    x = new cplx<float>(aR, aI);
 
-    z1.printCplx();
-    z2.printCplx();
-    z3.printCplx();
-    z4.printCplx();
+    cplx<float> *y;
+    y = new cplx<float>(bR, bI);
+
+    //cplx <float> *x;
+    //cplx <float> *y;
+    //x = new <float> cplx(aR, aI);
+    //y = new <float> cplx(bR, bI):
+
+    std::cout << "rx = " << x->radius() << std::endl;
+    std::cout << "ry = " << y->radius() << std::endl;
+
+    cplx<float> *z1 = new cplx<float>;
+    *z1 = *x + *y;
+    z1->printCplx();
+
+    cplx<float> *z2 = new cplx<float>;
+    *z2 = *x - *y;
+    z2->printCplx();
+
+    cplx<float> *z3 = new cplx<float>;
+    *z3 = *x * *y;
+    z3->printCplx();
+
+    cplx<float> *z4 = new cplx<float>;
+    *z4 = *x / *y;
+    z4->printCplx();
 
     return 0;
 }

@@ -2,84 +2,114 @@
 #include <iostream>
 #include <cmath>
 
+
+
+
+
 /// Attributes
-float Re;
-float Im;
 
 
 /// Constructor and destructor
-cplx::cplx(float Re, float Im)
+template<class T>
+cplx<T>::cplx()
 {
     //ctor
+}
+template<class T>
+cplx<T>::cplx(T Re, T Im)
+{
     this->Re = Re;
     this->Im = Im;
 }
-
-cplx::~cplx()
+template<class T>
+cplx<T>::~cplx()
 {
     //dtor
 }
 
 
 /// Set functions
-void cplx::setRe(float Re)
+template<class T>
+void cplx<T>::setRe(T Re)
 {
     this->Re = Re;
 }
-void cplx::setIm(float Im)
+template<class T>
+void cplx<T>::setIm(T Im)
 {
     this->Im = Im;
 }
 
 
 /// Get functions
-float cplx::getRe()
+template<class T>
+T cplx<T>::getRe()
 {
     return Re;
 }
-float cplx::getIm()
+template<class T>
+T cplx<T>::getIm()
 {
     return Im;
 }
 
 
 /// Print function
-void cplx::printCplx()
+template<class T>
+void cplx<T>::printCplx()
 {
     std::cout << Re << " + " << Im << "i" << std::endl;
 }
 
 
 /// Maths functions (operator overloading)
-cplx operator+(cplx &x, cplx &y)
+// Not working like this because reasons?
+// Created as non-friend-functions in header file outside of class.
+/*
+template <class T> cplx<T> operator+(cplx<T> &x, cplx<T> &y)
 {
-    cplx z(
+    cplx<T> z(
         x.getRe() + y.getRe(),
         x.getIm() + y.getIm()
     );
     return z;
 }
-cplx operator-(cplx &x, cplx &y)
+template <class T> cplx<T> operator-(cplx<T> &x, cplx<T> &y)
 {
-    cplx z(
+    cplx<T> z(
         x.getRe() - y.getRe(),
         x.getIm() - y.getIm()
     );
     return z;
 }
-cplx operator*(cplx &x, cplx &y)
+template <class T> cplx<T> operator*(cplx<T> &x, cplx<T> &y)
 {
-    cplx z(
+    cplx<T> z(
         x.getRe() * y.getRe() - x.getIm() * y.getIm(),
         x.getRe() * y.getIm() + x.getIm() * y.getRe()
     );
     return z;
 }
-cplx operator/(cplx &x, cplx &y)
+template <class T> cplx<T> operator/(cplx<T> &x, cplx<T> &y)
 {
-    cplx z(
+    cplx<T> z(
         (x.getRe() * y.getRe() + x.getIm() * y.getIm()) / (pow(y.getRe(), 2) + pow(y.getIm(), 2)),
         (y.getRe() * x.getIm() - x.getRe() * y.getIm()) / (pow(y.getRe(), 2) + pow(y.getIm(), 2))
     );
     return z;
 }
+*/
+
+
+/// Non-overloaded maths functions
+template <class T>
+T cplx<T>::radius()
+{
+    return pow((pow(this->Re, 2) + pow(this->Im, 2)), 0.5);
+}
+
+
+/// Because this: https://stackoverflow.com/questions/8752837/undefined-reference-to-template-class-constructor
+template class cplx<int>;
+template class cplx<float>;
+template class cplx<double>;
