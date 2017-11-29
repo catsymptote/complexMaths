@@ -5,45 +5,62 @@
 
 int main()
 {
-    float aR = 2;
-    float aI = 3;
-    float bR = 4;
-    float bI = -1;
+    double aR = 2;
+    double aI = 3;
+    double bR = 4;
+    double bI = -1;
 
-    //cplx <float> x(aR, aI);
-    //cplx<float> x;
+    //cplx <double> x(aR, aI);
+    //cplx<double> x;
     //x.setRe(aR);
     //x.setIm(aI);
-    //cplx <float> y(bR, bI);
-    cplx<float> *x;
-    x = new cplx<float>(aR, aI);
+    //cplx <double> y(bR, bI);
+    cplx<double> *x;
+    x = new cplx<double>(aR, aI);
+    std::cout << "x:\t\t";
+    x->printCplx();
 
-    cplx<float> *y;
-    y = new cplx<float>(bR, bI);
+    cplx<double> *y;
+    y = new cplx<double>(bR, bI);
+    std::cout << "y:\t\t";
+    y->printCplx();
 
-    //cplx <float> *x;
-    //cplx <float> *y;
-    //x = new <float> cplx(aR, aI);
-    //y = new <float> cplx(bR, bI):
+    //cplx <double> *x;
+    //cplx <double> *y;
+    //x = new <double> cplx(aR, aI);
+    //y = new <double> cplx(bR, bI):
 
-    std::cout << "rx = " << x->radius() << std::endl;
-    std::cout << "ry = " << y->radius() << std::endl;
+    std::cout << "Radius x:\t" << x->radius() << std::endl;
+    std::cout << "Radius y:\t" << y->radius() << std::endl;
 
-    cplx<float> *z1 = new cplx<float>;
+    std::cout << "Angle x:\t" << x->angle() << std::endl;
+    std::cout << "Angle y:\t" << y->angle() << std::endl;
+
+    cplx<double> *z1 = new cplx<double>;
     *z1 = *x + *y;
+    std::cout << "x+y:\t\t";
     z1->printCplx();
 
-    cplx<float> *z2 = new cplx<float>;
+    cplx<double> *z2 = new cplx<double>;
     *z2 = *x - *y;
+    std::cout << "x-y:\t\t";
     z2->printCplx();
 
-    cplx<float> *z3 = new cplx<float>;
+    cplx<double> *z3 = new cplx<double>;
     *z3 = *x * *y;
+    std::cout << "x*y:\t\t";
     z3->printCplx();
 
-    cplx<float> *z4 = new cplx<float>;
+    cplx<double> *z4 = new cplx<double>;
     *z4 = *x / *y;
+    std::cout << "x/y:\t\t";
     z4->printCplx();
+
+    cplx<double> *z5 = new cplx<double>;
+    *z5 = *x;
+    std::cout << "Conjugate of x:\t";
+    *z5 = z5->conjugate();
+    z5->printCplx();
 
     return 0;
 }

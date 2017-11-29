@@ -10,25 +10,33 @@ class cplx
 {
     public:
         cplx();
-        cplx(T Re, T Im);       // Constructor
-        virtual ~cplx();        // Destructor
+        cplx(T Re, T Im);           // Constructor
+        virtual ~cplx();            // Destructor
 
-        void setRe(T Re);       // Set real part of cplx.
-        void setIm(T Im);       // Set imaginary part of cplx.
+        void setRe(T Re);           // Set real part of cplx.
+        void setIm(T Im);           // Set imaginary part of cplx.
 
-        T getRe();              // Get real part of cplx.
-        T getIm();              // Get imaginary part of cplx.
+        T getRe();                  // Get real part of cplx.
+        T getIm();                  // Get imaginary part of cplx.
 
-        void printCplx();       // Print complex number.
+        void printCplx();           // Print complex number.
 
-        T radius();             // Return radius of cplx.
+        double radius();            // Return radius of cplx.
+        double angle();             // Return angle of cplx.
+        cplx conjugate();           // Return the conjugate of cplx.
 
-
+        /*
+        /// Operator overloading
+        cplx operator+();
+        cplx operator-();
+        cplx operator*();
+        */
 
 
     private:
-        T Re;                   // Real part of cplx.
-        T Im;                   // Imaginary part of cplx.
+        double pi = 3.141592653589793238463;
+        T Re;   // Real part of cplx.
+        T Im;   // Imaginary part of cplx.
 
 
     /// Friendly functions
@@ -41,6 +49,7 @@ class cplx
 };
 
 
+/// Templated operator overloading functions
 template <class T> cplx<T> operator+(cplx<T> &x, cplx<T> &y)
 {
     cplx<T> z(
@@ -73,4 +82,5 @@ template <class T> cplx<T> operator/(cplx<T> &x, cplx<T> &y)
     );
     return z;
 }
+
 #endif // cplx_H
