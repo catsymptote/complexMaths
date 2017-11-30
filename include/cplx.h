@@ -19,10 +19,14 @@ class cplx
         T getRe();                  // Get real part of cplx.
         T getIm();                  // Get imaginary part of cplx.
 
-        void printCplx();           // Print complex number.
+        void printCplx();           // Print complex number in Cartesian form.
+        void printCplxPolar();      // Print complex number in polar form.
 
         double radius();            // Return radius of cplx.
         double angle();             // Return angle of cplx.
+        cplx getSqrt(cplx<T> &x);   // Return square of cplx.
+        cplx getReciprocal(cplx &x);       // Return cplx reciprocal.
+
         cplx conjugate();           // Return the conjugate of cplx.
 
         /*
@@ -35,8 +39,10 @@ class cplx
 
     private:
         double pi = 3.141592653589793238463;
-        T Re;   // Real part of cplx.
-        T Im;   // Imaginary part of cplx.
+        T Re;           // Real part of cplx.
+        T Im;           // Imaginary part of cplx.
+
+        int sgn(T x);   // Sign function.
 
 
     /// Friendly functions
@@ -46,12 +52,23 @@ class cplx
     friend cplx operator*(cplx &x, cplx &y);
     friend cplx operator/(cplx &x, cplx &y);
     */
+    //friend cplx add(cplx &x, cplx &y);
 };
+
+
+/// Math lib functions
+/*
+//template <class T> friend cplx<T> add(cplx<T> &x, cplx<T> &y);
+template <class T> cplx<T> subtract(cplx<T> &x, cplx<T> &y);
+template <class T> cplx<T> multiply(cplx<T> &x, cplx<T> &y);
+template <class T> cplx<T> divide(cplx<T> &x, cplx<T> &y);
+*/
 
 
 /// Templated operator overloading functions
 template <class T> cplx<T> operator+(cplx<T> &x, cplx<T> &y)
 {
+    //return add(x, y);
     cplx<T> z(
         x.getRe() + y.getRe(),
         x.getIm() + y.getIm()
