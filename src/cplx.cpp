@@ -4,22 +4,22 @@
 
 
 /// Constructor and destructor
-template<class T>
-cplx<T>::cplx()
+template<class T> cplx<T>::cplx()
 {
     //ctor
 }
-template<class T>
-cplx<T>::cplx(T Re, T Im)
+
+template<class T> cplx<T>::cplx(T Re, T Im)
 {
     this->Re = Re;
     this->Im = Im;
 }
-template<class T>
-cplx<T>::~cplx()
+
+template<class T> cplx<T>::~cplx()
 {
     //dtor
 }
+
 
 
 /// Set functions
@@ -28,11 +28,13 @@ void cplx<T>::setRe(T Re)
 {
     this->Re = Re;
 }
+
 template<class T>
 void cplx<T>::setIm(T Im)
 {
     this->Im = Im;
 }
+
 
 
 /// Get functions
@@ -41,6 +43,7 @@ T cplx<T>::getRe()
 {
     return Re;
 }
+
 template<class T>
 T cplx<T>::getIm()
 {
@@ -48,15 +51,18 @@ T cplx<T>::getIm()
 }
 
 
+
 /// Print function
 template<class T> void cplx<T>::printCplx()
 {
     std::cout << Re << " + " << Im << "i" << std::endl;
 }
+
 template<class T> void cplx<T>::printCplxPolar()
 {
     std::cout << this->radius() << "e^i" << this->angle() << std::endl;
 }
+
 
 
 /// Non-overloaded maths functions
@@ -106,40 +112,6 @@ cplx<T> cplx<T>::getReciprocal(cplx<T> &x)
 }
 
 
-/*
-template <class T> cplx<T> add(cplx<T> &x, cplx<T> &y)
-{
-    cplx<T> z(
-        x.getRe() + y.getRe(),
-        x.getIm() + y.getIm()
-    );
-    return z;
-}
-template <class T> cplx<T> subtract(cplx<T> &x, cplx<T> &y)
-{
-    cplx<T> z(
-        x.getRe() - y.getRe(),
-        x.getIm() - y.getIm()
-    );
-    return z;
-}
-template <class T> cplx<T> multiply(cplx<T> &x, cplx<T> &y)
-{
-    cplx<T> z(
-        x.getRe() * y.getRe() - x.getIm() * y.getIm(),
-        x.getRe() * y.getIm() + x.getIm() * y.getRe()
-    );
-    return z;
-}
-template <class T> cplx<T> divide(cplx<T> &x, cplx<T> &y)
-{
-    cplx<T> z(
-        (x.getRe() * y.getRe() + x.getIm() * y.getIm()) / (pow(y.getRe(), 2) + pow(y.getIm(), 2)),
-        (y.getRe() * x.getIm() - x.getRe() * y.getIm()) / (pow(y.getRe(), 2) + pow(y.getIm(), 2))
-    );
-    return z;
-}
-*/
 /// Sign function: https://en.wikipedia.org/wiki/Sign_function
 template <class T> int cplx<T>::sgn(T x)
 {

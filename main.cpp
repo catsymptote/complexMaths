@@ -10,11 +10,6 @@ int main()
     double bR = 4;
     double bI = -1;
 
-    //cplx <double> x(aR, aI);
-    //cplx<double> x;
-    //x.setRe(aR);
-    //x.setIm(aI);
-    //cplx <double> y(bR, bI);
     cplx<double> *x;
     x = new cplx<double>(aR, aI);
     std::cout << "x:\t\t";
@@ -25,10 +20,6 @@ int main()
     std::cout << "y:\t\t";
     y->printCplx();
 
-    //cplx <double> *x;
-    //cplx <double> *y;
-    //x = new <double> cplx(aR, aI);
-    //y = new <double> cplx(bR, bI):
 
     std::cout << "Radius x:\t" << x->radius() << std::endl;
     std::cout << "Radius y:\t" << y->radius() << std::endl;
